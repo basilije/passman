@@ -32,16 +32,7 @@ def find_password():
             anything_found = True
     
     if not(anything_found):
-        print("Not found!")
-
-    #print(list(mydict.keys())[list(mydict.values()).index(value)]) # Prints george
-    #looked_for_website = input('What website is it for? ')
-    #print(search(password_list, looked_for_website))
-    # for entry in password_list:
-    #     found_website = entry.get('website')
-    #     if found_website == looked_for_website:
-    #         print(found_website)
-
+        print("Website doesn't exist")
 
 while True:
     print('''
@@ -55,8 +46,8 @@ while True:
     if user_choice == 'new':
         new_password()
     elif user_choice == 'show':
-        pass
-    elif user_choice == 'find':
+    #    pass
+    #elif user_choice == 'find':
         find_password()
     else:
         print("Hwat?? That didn't compute") 
