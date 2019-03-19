@@ -39,15 +39,12 @@ while True:
     Welcome to the password manager ya dingus.
     Type "new" to create a new password.
     Type "show" to look up a password.
-    Type "find" to look up a username/password for the specific website.
     ''')
 
     user_choice = input('Whatcha wanna do? ')
     if user_choice == 'new':
         new_password()
     elif user_choice == 'show':
-    #    pass
-    #elif user_choice == 'find':
         find_password()
     else:
         print("Hwat?? That didn't compute") 
