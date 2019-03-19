@@ -3,21 +3,19 @@
 import random
 import string
 import sqlite3
-0
+
 password_list = []
 
 
 # first time
+
 # import sqlite3
 # conn = sqlite3.connect('passwords.db')
 # c = conn.cursor()
-
-
-# c.execute('''CREATE TABLE passwords
-#              (website text, username text, password text)''')
-
+# c.execute('''CREATE TABLE passwords (website text, username text, password text)''')
 # conn.commit()
 # conn.close()
+
 
 import sqlite3
 conn = sqlite3.connect('passwords.db')
@@ -43,26 +41,16 @@ while True:
     else:
         pass
 
-    # print(website)
-    # print(username)
-    # print(password)
-
     website_entry = dict([("website", website), ("username", username), ("password", password)])
-    # print(website_entry)
     password_list.append(website_entry)
-
     print(password_list)
-
     
+    # open the database
     conn = sqlite3.connect('passwords.db')
     c = conn.cursor()
-
-    # Create table
-
-
-
+    # insert values
     c.execute("INSERT INTO passwords VALUES (?,?,?)", [website, username, password])
-
+    # commit, then close the database
     conn.commit()
     conn.close()
 

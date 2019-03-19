@@ -1,67 +1,36 @@
-# password manager
-# input the information that we want to save
 import random
 import string
-import sqlite3
-0
+# password manager
+
 password_list = []
 
-
-# first time
-# import sqlite3
-# conn = sqlite3.connect('passwords.db')
-# c = conn.cursor()
-
-
-# c.execute('''CREATE TABLE passwords
-#              (website text, username text, password text)''')
-
-# conn.commit()
-# conn.close()
-
-import sqlite3
-conn = sqlite3.connect('passwords.db')
-c = conn.cursor()
-aa=c.execute('SELECT * FROM passwords')
-aaa = aa.fetchall()
-c.close()
-for a in aaa:
-    password_list.append(dict([("website", a[0]), ("username", a[1]), ("password", a[2]) ]))
-
-while True:
-    website = input("What is the website? ")
-    username = input("What is the username? ")
-    password = input("What is the passsword? ")
-    if password == "random":
-        try:
-            num_of_digits = int(input("How many characters? "))
-        except:
-            num_of_digits = 16
-        random_password = ''.join(random.choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(num_of_digits))
+def new_password():
+    website = input('What is the website? ')
+    username = input('What is the username? ')
+    password = input('What is the password? ')
+    if password == 'random':
+        num_of_digits = int(input('How many characters long should the password be? '))
+        random_password = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(num_of_digits))
         print(f'This is the random password: {random_password}')
         password = random_password
     else:
         pass
-
-    # print(website)
-    # print(username)
-    # print(password)
-
-    website_entry = dict([("website", website), ("username", username), ("password", password)])
-    # print(website_entry)
+    
+    website_entry = dict([("website", website), ("username", username), ("password", password)]) 
     password_list.append(website_entry)
-
     print(password_list)
 
-    
-    conn = sqlite3.connect('passwords.db')
-    c = conn.cursor()
+while True:
+    print('''
+    Welcome to the password manager ya dingus.
+    Type "new" to create a new password.
+    Type "show" to look up a password.
+    ''')
 
-    # Create table
-
-
-
-    c.execute("INSERT INTO passwords VALUES (?,?,?)", [website, username, password])
-
-    conn.commit()
-    conn.close()
+    user_choice = input('Whatcha wanna do? ')
+    if user_choice == 'new':
+        new_password()
+    elif user_choice == 'show':
+        pass
+    else:
+        print("Hwat?? That didn't compute") 
