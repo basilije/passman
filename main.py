@@ -20,11 +20,35 @@ def new_password():
     password_list.append(website_entry)
     print(password_list)
 
+
+def find_password():
+    looked_for_website = input('What website is it for? ')
+    anything_found = False
+    for entry in password_list:
+        if looked_for_website == entry['website']:
+            print('Found:')
+            print('Username is:' + entry['username'])
+            print('Password is:' + entry['password'])
+            anything_found = True
+    
+    if not(anything_found):
+        print("Not found!")
+
+    #print(list(mydict.keys())[list(mydict.values()).index(value)]) # Prints george
+    #looked_for_website = input('What website is it for? ')
+    #print(search(password_list, looked_for_website))
+    # for entry in password_list:
+    #     found_website = entry.get('website')
+    #     if found_website == looked_for_website:
+    #         print(found_website)
+
+
 while True:
     print('''
     Welcome to the password manager ya dingus.
     Type "new" to create a new password.
     Type "show" to look up a password.
+    Type "find" to look up a username/password for the specific website.
     ''')
 
     user_choice = input('Whatcha wanna do? ')
@@ -32,5 +56,7 @@ while True:
         new_password()
     elif user_choice == 'show':
         pass
+    elif user_choice == 'find':
+        find_password()
     else:
         print("Hwat?? That didn't compute") 
